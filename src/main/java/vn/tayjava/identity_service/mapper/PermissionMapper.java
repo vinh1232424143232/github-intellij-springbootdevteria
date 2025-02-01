@@ -6,7 +6,6 @@ import vn.tayjava.identity_service.entity.Permission;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
 public interface PermissionMapper {
     Permission toPermission(PermissionRequest permissionRequest);
     PermissionResponse toPermissionResponse(Permission permission);

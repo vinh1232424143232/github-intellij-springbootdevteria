@@ -20,13 +20,12 @@ public class PermissionService {
     PermissionMapper permissionMapper;
     public PermissionResponse create(PermissionRequest permissionRequest){
         Permission permission = permissionMapper.toPermission(permissionRequest);
-        permissionRepository.save(permission);
+        permission = permissionRepository.save(permission);
         return permissionMapper.toPermissionResponse(permission);
     }
     public List<PermissionResponse> getAll(){
         var permissions = permissionRepository.findAll();
-        return permissions.stream().map(permission
-                -> permissionMapper.toPermissionResponse(permission)).toList();
+        return permissions.stream().map(permissionMapper::toPermissionResponse).toList();
     }
     public void delete(String permissionName){
         permissionRepository.deleteById(permissionName);
